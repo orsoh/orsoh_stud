@@ -25,3 +25,17 @@ while not counter == 10:
 print('Кyjhv')
 
 
+new_line = ['sda', '', 'sad!!']
+exception = ('!', '\'', '\"', '.', ',', '?', ':', ';')
+for element in exception:
+    counter = 0
+    while not counter == len(new_line):
+        if new_line[counter].find(element) == len(new_line[counter]-1):
+            new_line[counter].remove[len(new_line[counter])-1]
+            continue
+        elif new_line[counter].find(element) == 0:
+            new_line[counter].remove[0]
+            continue
+        else:
+            counter += 1
+print(new_line)          
