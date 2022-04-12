@@ -3,18 +3,25 @@
 status_line = False
 
 while status_line == False:
+    status_line = True
     new_line = input('Введите строку ---<  ').strip().split(' ')
     
     counter = new_line.count('')
-
+    
     for i in range(counter):
-        new_line.remove('')
-        
-    status_line = True
+        try:
+            new_line.remove('')
+        except Exception as error_list:
+            print('Я сломался')
+            print(error_list)
+            status_line = False
+            
     for word in new_line:
         if not word.isalpha():
-            print(f'{word} is not word')
+            print(f'{word} не является словом')
             status_line = False
         
-            
-print(new_line)
+
+counter_word = len(new_line)
+
+print(f'Колличество слов: {counter_word}')
