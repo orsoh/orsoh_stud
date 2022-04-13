@@ -5,7 +5,7 @@
 
 new_word = ''
 new_number = ''
-print('Зформуйте строку, яка містить певну інформацію про символ в відомому слові.')
+
 while not new_word.isalpha() or not len(new_word) > 0:
     new_word = input('Введите слово ---> ').replace(' ', '')
 
