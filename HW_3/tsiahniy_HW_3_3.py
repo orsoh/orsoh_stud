@@ -8,6 +8,10 @@ lst2 = []
 
 for element_lst1 in lst1:
     if type(element_lst1) == int:
-        lst2.append(element_lst1)
+        try:
+            lst2.append(element_lst1)
+        except Exception as error_list:
+            print(f'Я сломался при попытке добавить {element_lst1}')
+            print(error_list)
   
 print(lst2)
