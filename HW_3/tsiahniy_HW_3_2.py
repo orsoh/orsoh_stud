@@ -4,7 +4,6 @@
 
 new_line = input('Введите строку ---<  ').strip().replace('/', ' ').split(' ')
 
-
 line_exception0 = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '№', '#')
 
 for element0 in line_exception0:
@@ -23,7 +22,6 @@ for element0 in line_exception0:
             continue
         else:
             counter += 1
-
 
 line_exception1 = ('!', '\"', '.', ',', '?', ':', ';', '\'', '–', '(', ')', '[', ']', '#', '*', '@', '«', '»')
 
@@ -52,7 +50,6 @@ for element1 in line_exception1:
         else:
             counter += 1
 
-
 line_exception2 = ('\'', '-', '–')
 
 for element2 in line_exception2:
@@ -73,9 +70,8 @@ for element2 in line_exception2:
         else:
             counter += 1
 
-
 counter = new_line.count('')
-    
+
 for i in range(counter):
     try:
         new_line.remove('')
@@ -83,13 +79,11 @@ for i in range(counter):
         print('Я сломался при попытке убрать пустые ячейки')
         print(error_list)
 
-
 counter_words = 0
 for word in new_line:
     if not word.isalpha():
         print(f'{word} не является словом')
     else:
         counter_words += 1
-
 
 print(f'Колличество слов: {counter_words}')
