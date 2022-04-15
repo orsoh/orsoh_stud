@@ -15,7 +15,7 @@ shops_dict = {"cito": 47.999,
                "the_partner": 38.988,
                "sota": 37.720,
                "rozetka": 38.003}
-lower_default = 1000 ** 1000
+lower_default = 1000 ** 1000    # Как это можно сделать красивее и менее затратно?
 upper_default = 0
 
 for shop in shops_dict.items():
