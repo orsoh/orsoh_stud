@@ -1,4 +1,4 @@
-test_list = ('11qwer', 22.2, 33, [4, 44], (5, 55), {6, 66}, {7:77}, True, None)
+test_list = ('11qwer', 22.2, 33, [4, 44], (5, 55), {6, 66}, {7: 77}, True, None)
 
 
 def deter_type(test_var):
@@ -15,13 +15,13 @@ def converter_float(test_var):
     
     
 def logical_operation(test_var1, test_var2):
-    cond1 = type(test_var1) is int or type(test_var1) is float
-    cond2 = type(test_var2) is int or type(test_var2) is float
+    cond1 = isinstance(test_var1, int) or isinstance(test_var1, float)
+    cond2 = isinstance(test_var2, int) or isinstance(test_var2, float)
     if cond1 and cond2:
         result = test_var1 - test_var2
-    elif type(test_var1) is str and type(test_var2) is str:
+    elif isinstance(test_var1, str) and isinstance(test_var2, str):
         result = test_var1 + test_var2
-    elif type(test_var1) is str and type(test_var2) is not str:
+    elif isinstance(test_var1, str) and not isinstance(test_var2, str):
         result = {test_var1: test_var2}
     else:
         result = (test_var1, test_var2)
