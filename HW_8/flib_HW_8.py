@@ -1,3 +1,5 @@
+
+
 def get_user_choice():
     while True:
         user_choice = input('Сделайте свой выбор (камень, ножницы, бумага, ящерица, спок) или введите "стоп": ')
@@ -56,6 +58,7 @@ def start_game():
         if user_choice == 'стоп':
             stop_choice()
             break
+
         computer_choice = get_computer_choice()
         winner = get_winner(user_choice, computer_choice)
         make_message(user_choice, computer_choice, winner)
