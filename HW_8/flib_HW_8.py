@@ -92,18 +92,3 @@ def make_message(user_choice, computer_choice, winner):
         print('Ничья!')
     else:
         print(f'Победил {winner}!')
-
-
-def start_game():
-    '''
-    Функция, вызов которой запусткает игру
-    '''
-    while True:
-        user_choice = get_user_choice()
-        if user_choice == 'стоп':
-            stop_choice()
-            break
-
-        computer_choice = get_computer_choice()
-        winner = get_winner(user_choice, computer_choice)
-        make_message(user_choice, computer_choice, winner)
