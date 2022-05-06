@@ -40,6 +40,7 @@ def change_type(args_type):
                     except:
                         print(f'Не удалось изменить тип аргумента {arg} на {args_type} ')
                         new_args.append(arg)
+
                 else:
                     new_args.append(arg)
 
@@ -51,10 +52,12 @@ def change_type(args_type):
                     except:
                         print(f'Не удалось изменить тип аргумента {key}={val} на {args_type} ')
                         new_kwargs[key] = val
+
                 else:
                     new_kwargs[key] = val
 
             result = fun(*new_args, **new_kwargs)
+
             try:
                 result = args_type(result)
             except:
