@@ -38,8 +38,10 @@ def change_type(args_type):
                         new_arg = args_type(arg)
                         new_args.append(new_arg)
                     except:
-                        new_arg = arg
-                        new_args.append(new_arg)
+                        print(f'Не удалось изменить тип аргумента {arg} на {args_type} ')
+                        new_args.append(arg)
+                else:
+                    new_args.append(arg)
 
             for key, val in kwargs.items():
                 if not isinstance(val, args_type):
@@ -47,12 +49,16 @@ def change_type(args_type):
                         new_val = args_type(val)
                         new_kwargs[key] = new_val
                     except:
-                        new_val = args_type(val)
-                        new_kwargs[key] = new_val
+                        print(f'Не удалось изменить тип аргумента {key}={val} на {args_type} ')
+                        new_kwargs[key] = val
+                else:
+                    new_kwargs[key] = val
+
+            result = fun(*new_args, **new_kwargs)
             try:
-                result = args_type(fun(*new_args, **new_kwargs))
+                result = args_type(result)
             except:
-                result = fun(*new_args, **new_kwargs)
+                print(f'Не удалось изменить тип выходящих данных функции на {args_type} ')
 
             return result
 
@@ -64,7 +70,7 @@ def change_type(args_type):
 
 def ill_try_faster():
     '''
-    Безполезная функция, целью существования которой является загрузить процессор
+    Безполезная функция, целью существования которой является немного загрузить процессор
     :return: всегда возвращает 0
     '''
     zero = 0
@@ -98,7 +104,10 @@ def levia_fun(century, year):
     :param year: любые данные но в том же формате что и century
     :return: возвращает 0 пришедший по эстафете от legendary_fun
     '''
-    now = century + year
+    try:
+        now = century + year
+    except:
+        now = 'какой то там'
     print(f'Шел {now} год, но все до сих пор помнят фразу:')
     ill_try_faster()
     zero = legendary_fun()
@@ -106,8 +115,9 @@ def levia_fun(century, year):
     return zero
 
 
-century = 20
-#year = 22
-work_check = 'А ' + levia_fun(century, year=22) + ' всё ещё равен нулю'
+century = '20'
+leviafun = levia_fun(century, year=22)
+work_check = 'А ' + str(leviafun) + f' имеет класс {type(leviafun)}'
 print(work_check)
+
 
