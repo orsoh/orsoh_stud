@@ -11,18 +11,21 @@ WIN_RULES = {
 
 wins_counter = {
     'counter_user_wins': 0,
-    'counter_computer_wins': 0
+    'counter_computer_wins': 0,
+    'games_counter': 0
 }
 
 def write_to_logs(fun):
     '''
     Декоратор записывающий данные в logs.txt
     '''
-    def wrapper(*args,**kwargs):
+    def wrapper(*args, **kwargs):
         with open('logs.txt', mode='at') as logs:
+            wins_counter['games_counter'] = wins_counter['games_counter'] + 1
+            game = wins_counter['games_counter']
             data = (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
             msg = fun(*args, **kwargs)
-            log = f'{data} {msg}'
+            log = f'{game} {data} {msg}'
             logs.write(log)
 
     return wrapper
@@ -147,9 +150,10 @@ def stat_fun():
             return
         elif user_choice == "очистить":
             with open('logs.txt', mode='w') as logs:
-                data = (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-                log = f'{data} Новая сессия\n'
-                logs.write(log)
+                wins_counter['games_counter'] = 0
+                wins_counter['counter_user_wins'] = 0
+                wins_counter['counter_computer_wins'] = 0
+                logs.write('Новая сессия\n')
             return
         else:
             print('Не верный ввод')

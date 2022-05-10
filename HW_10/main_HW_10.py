@@ -7,16 +7,13 @@ from flib_HW_10 import stop_choice
 from flib_HW_10 import make_message
 from flib_HW_10 import get_winner
 from flib_HW_10 import stat_fun
-import datetime
 
 def start_game():
     '''
     Функция, вызов которой запускает игру
     '''
     with open('logs.txt', mode='at') as logs:
-        data = (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-        log = f'{data} Новая сессия\n'
-        logs.write(log)
+        logs.write('Новая сессия\n')
 
     while True:
         user_choice = get_user_choice()
@@ -32,8 +29,6 @@ def start_game():
         make_message(user_choice, computer_choice, winner)
 
     with open('logs.txt', mode='at') as logs:
-        data = (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-        log = f'{data} Конец сессии\n'
-        logs.write(log)
+        logs.write('Конец сессии\n')
 
 start_game()
