@@ -5,18 +5,31 @@ city_catalog = ('Минск', 'Брест', 'Витебск', 'Гомель', '�
 
 
 def write_to_errors(error_list):
+    '''
+    Записывает в файл 'error_list.txt' информацию об ошибках
+    :param error_list:  переменная содержащая информацию об ошибках
+    '''
     with open('error_list.txt', mode='at') as errors:
         data = (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S \n'))
         for_error = f' {error_list}'
         errors.write(data)
         errors.write(for_error)
+        errors.write('\n')
+
 
 def write_to_logs(for_logs):
+    '''
+    Записывает в файл 'logs.txt' содержимое переменной for_logs
+    '''
     with open('logs.txt', mode='at') as logs:
         logs.write(for_logs)
 
 
 def choice_city():
+    '''
+    Функция позволяющая пользователю выбрать город из списка городов
+    :return: возвращает название города в формате str
+    '''
     for city in city_catalog:
         print(city)
     while True:
@@ -34,6 +47,11 @@ def choice_city():
 
 
 def connect_with_bank(chosen_city):
+    '''
+    Устанавливает связь с сервером в зависимости от выбранного города
+    :param chosen_city: Название города в формате str
+    :return: данные с сервера в формате requests.models.Response или None в случае ошибки
+    '''
     print('Соединение...')
     try:
         bank_request = requests.request('GET', f'https://belarusbank.by/api/kursExchange?city={chosen_city}')
@@ -41,21 +59,22 @@ def connect_with_bank(chosen_city):
         print('Соединение не установлено')
         write_to_errors(error_list)
         return
-
     if 300 > bank_request.status_code >= 200 and bank_request.headers.get(
             'Content-Type') == 'application/json; charset=utf-8':
         print('Установлено')
         return bank_request
     else:
-        print('Ошибка')
+        print('Ошибка данных')
+        print(bank_request.status_code)
         msg = bank_request.headers.get('Content-Type')
         print(msg)
-        error_list = f'{msg}'
+        error_list = f'Ошибка данных {msg}'
         write_to_errors(error_list)
         return
 
 
 class BankRequst():
+
     content = None
 
     _for_exchange_currency = ('USD_in', 'USD_out', 'EUR_in', 'EUR_out', 'RUB_in', 'RUB_out', 'GBP_in', 'GBP_out',
@@ -86,6 +105,10 @@ class BankRequst():
             return
 
     def choise_department(self):
+        '''
+        Позволяет пользователю выбрать отделение банка из списка
+        :return: название отделения в формате str
+        '''
         departments_catalog = {}
         for departments in self.content:
             for key, val in departments.items():
@@ -96,21 +119,30 @@ class BankRequst():
             print(departments)
 
         while True:
-            choise_department = input('Выберете отделение ---> ')
+            choise_department = input('Выберете отделение или введите "назад" ---> ').capitalize()
             choise_department = choise_department.strip()
-            if choise_department not in departments_catalog.keys():
+            if choise_department not in departments_catalog.keys() and choise_department != 'Назад':
                 print('Не верный ввод')
                 continue
+            elif choise_department == 'Назад':
+                return
             else:
                 chosen_department = departments_catalog[choise_department]
                 for_logs = f'{choise_department} \n'
                 write_to_logs(for_logs)
                 return chosen_department
 
+
     @property
     def get_exchange_currency(self):
+        '''
+        Функция выводящая на экран информацию о курсе валют в выбранном отделении банка
+        :return: информация о курсе в формате dict или None если операция отменена
+        '''
         exchange_currency = {}
         chosen_department = self.choise_department()
+        if chosen_department == None:
+            return
 
         for currency in self._for_exchange_currency:
             try:
@@ -128,8 +160,14 @@ class BankRequst():
 
     @property
     def get_depart_info(self):
+        '''
+        Функция выводящая на экран информацию об выбранном отделении банка
+        :return: информация об отделении банка в формате dict или None если операция отменена
+        '''
         department_info = {}
         chosen_department = self.choise_department()
+        if chosen_department == None:
+            return
         for info in self._for_depart_info:
             try:
                 department_info[info] = chosen_department[info]

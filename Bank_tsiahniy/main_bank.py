@@ -5,13 +5,20 @@ from Banks_libr import BankRequst
 from Banks_libr import write_to_logs
 
 def start():
+    '''
+    Запускает выполнение программы
+    '''
     for_logs = (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S \n'))
     write_to_logs(for_logs)
     while True:
         chosen_city = choice_city()
         if chosen_city == 'Выход':
+            for_logs = 'Выход\n'
+            write_to_logs(for_logs)
             return
         bank_request = connect_with_bank(chosen_city)
+        if bank_request == None:
+            continue
         try:
             data_from_bank = BankRequst(bank_request)
         except TypeError:
