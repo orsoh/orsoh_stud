@@ -1,0 +1,35 @@
+
+2022-06-07 22:33:16 
+ Областное управление 100/Операционная служба 
+USD_in - 2.5700 
+USD_out - 2.6300 
+EUR_in - 2.7200 
+EUR_out - 2.8200 
+RUB_in - 3.5000 
+RUB_out - 4.2700 
+GBP_in - 2.7000 
+GBP_out - 3.2600 
+CAD_in - 0.0000 
+CAD_out - 0.0000 
+PLN_in - 5.2000 
+PLN_out - 6.0700 
+UAH_in - 0.3000 
+UAH_out - 8.8200 
+SEK_in - 0.0000 
+SEK_out - 0.0000 
+CHF_in - 0.0000 
+CHF_out - 0.0000 
+USD_EUR_in - 0.9300 
+USD_EUR_out - 1.0450 
+USD_RUB_in - 60.2000 
+USD_RUB_out - 0.0133 
+RUB_EUR_in - 0.0124 
+RUB_EUR_out - 63.8000 
+JPY_in - 0.0000 
+JPY_out - 0.0000 
+CNY_in - 3.6500 
+CNY_out - 4.0000 
+CZK_in - 0.0000 
+CZK_out - 0.0000 
+NOK_in - 0.0000 
+NOK_out - 0.0000 

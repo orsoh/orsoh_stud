@@ -7,19 +7,30 @@ from Banks_libr import write_to_logs
 def start():
     for_logs = (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S \n'))
     write_to_logs(for_logs)
-    chosen_city = choice_city()
-    bank_request = connect_with_bank(chosen_city)
-    data_from_bank = BankRequst(bank_request)
     while True:
-        user_choice = input('Введите "курс" для отображения курса \n'
-                            'Введите "инфо" для отображения информации об отделение банка\n'
-                            '---> ').lower().strip()
-        if user_choice != 'курс' and user_choice != 'инфо':
-            print('Не верный ввод')
+        chosen_city = choice_city()
+        if chosen_city == 'Выход':
+            return
+        bank_request = connect_with_bank(chosen_city)
+        try:
+            data_from_bank = BankRequst(bank_request)
+        except TypeError:
+            print('Ошибка типа данных')
             continue
-        elif user_choice == 'курс':
-            data_from_bank.get_exchange_currency
-        elif user_choice == 'инфо':
-            data_from_bank.get_depart_info
-
+        while True:
+            user_choice = input('Введите "курс" для отображения курса \n'
+                                'Введите "инфо" для отображения информации об отделение банка\n'
+                                'Введите "назад" для возвращения к выбору города\n'
+                                '---> ').lower().strip()
+            if user_choice != 'курс' and user_choice != 'инфо' and user_choice != 'назад':
+                print('Не верный ввод')
+                continue
+            elif user_choice == 'курс':
+                data_from_bank.get_exchange_currency
+            elif user_choice == 'инфо':
+                data_from_bank.get_depart_info
+                for_logs = 'Запрос информации\n'
+                write_to_logs(for_logs)
+            elif user_choice == 'назад':
+                break
 start()

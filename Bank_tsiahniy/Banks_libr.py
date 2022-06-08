@@ -20,10 +20,13 @@ def choice_city():
     for city in city_catalog:
         print(city)
     while True:
-        chosen_city = input('Введите город -->').capitalize()
-        if chosen_city not in city_catalog:
+        chosen_city = input('Введите город или\n'
+                            'Введите "выход" для завершения работы -->').capitalize()
+        if chosen_city not in city_catalog and chosen_city != 'Выход':
             print('Не верный ввод')
             continue
+        elif chosen_city == 'Выход':
+            return 'Выход'
         else:
             for_logs = f'Выбран город {chosen_city} \n'
             write_to_logs(for_logs)
@@ -35,17 +38,20 @@ def connect_with_bank(chosen_city):
     try:
         bank_request = requests.request('GET', f'https://belarusbank.by/api/kursExchange?city={chosen_city}')
     except Exception as error_list:
-        print(bank_request.status_code)
-        print('Соединение не удалось')
+        print('Соединение не установлено')
         write_to_errors(error_list)
         return
 
     if 300 > bank_request.status_code >= 200 and bank_request.headers.get(
             'Content-Type') == 'application/json; charset=utf-8':
+        print('Установлено')
         return bank_request
     else:
-        print('Ошибка типа контента')
-        print(bank_request.headers.get('Content-Type'))
+        print('Ошибка')
+        msg = bank_request.headers.get('Content-Type')
+        print(msg)
+        error_list = f'{msg}'
+        write_to_errors(error_list)
         return
 
 
@@ -90,7 +96,7 @@ class BankRequst():
             print(departments)
 
         while True:
-            choise_department = input('Выберете отделение ---> ": ')
+            choise_department = input('Выберете отделение ---> ')
             choise_department = choise_department.strip()
             if choise_department not in departments_catalog.keys():
                 print('Не верный ввод')
