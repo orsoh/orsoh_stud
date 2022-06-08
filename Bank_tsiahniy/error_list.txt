@@ -1,0 +1,20 @@
+2022-06-09 00:44:34 
+ 'NoneType' object is not subscriptable
+2022-06-09 00:44:34 
+ 'NoneType' object is not subscriptable
+2022-06-09 00:44:34 
+ 'NoneType' object is not subscriptable
+2022-06-09 00:44:34 
+ 'NoneType' object is not subscriptable
+2022-06-09 00:44:34 
+ 'NoneType' object is not subscriptable
+2022-06-09 00:44:34 
+ 'NoneType' object is not subscriptable
+2022-06-09 00:44:34 
+ 'NoneType' object is not subscriptable
+2022-06-09 00:44:34 
+ 'NoneType' object is not subscriptable
+2022-06-09 00:44:34 
+ 'NoneType' object is not subscriptable
+2022-06-09 00:53:55 
+ HTTPSConnectionPool(host='belarusbank.by', port=443): Max retries exceeded with url: /api/kursExchange?city=%D0%91%D1%80%D0%B5%D1%81%D1%82 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001D4B726DD00>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
