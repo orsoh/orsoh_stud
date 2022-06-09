@@ -119,12 +119,12 @@ class BankRequst():
             print(departments)
 
         while True:
-            choise_department = input('Выберете отделение или введите "назад" ---> ').capitalize()
+            choise_department = input('Выберете отделение или введите "назад" ---> ')
             choise_department = choise_department.strip()
-            if choise_department not in departments_catalog.keys() and choise_department != 'Назад':
+            if choise_department not in departments_catalog.keys() and choise_department != 'назад':
                 print('Не верный ввод')
                 continue
-            elif choise_department == 'Назад':
+            elif choise_department == 'назад':
                 return
             else:
                 chosen_department = departments_catalog[choise_department]
