@@ -140,3 +140,42 @@ USD_RUB_out - 0.0134
 RUB_EUR_in - 0.0125 
 RUB_EUR_out - 63.0000 
 Выход
+2022-06-10 17:12:17 
+Выбран город Брест 
+Запрос информации
+Отделение 100/1027 
+USD_in - 2.5000 
+USD_out - 2.6000 
+EUR_in - 2.6300 
+EUR_out - 2.7800 
+RUB_in - 3.5000 
+RUB_out - 4.4000 
+GBP_in - 2.6000 
+GBP_out - 3.1900 
+CAD_in - 0.0000 
+CAD_out - 0.0000 
+PLN_in - 5.0000 
+PLN_out - 5.8800 
+UAH_in - 0.3000 
+UAH_out - 8.6500 
+SEK_in - 0.0000 
+SEK_out - 0.0000 
+CHF_in - 0.0000 
+CHF_out - 0.0000 
+JPY_in - 0.0000 
+JPY_out - 0.0000 
+CNY_in - 3.6500 
+CNY_out - 4.0000 
+CZK_in - 0.0000 
+CZK_out - 0.0000 
+NOK_in - 0.0000 
+NOK_out - 0.0000 
+USD_EUR_in - 0.9200 
+USD_EUR_out - 1.0400 
+USD_RUB_in - 56.9000 
+USD_RUB_out - 0.0135 
+RUB_EUR_in - 0.0126 
+RUB_EUR_out - 59.8000 
+Отделение 100/1027 
+Запрос информации
+Выход
