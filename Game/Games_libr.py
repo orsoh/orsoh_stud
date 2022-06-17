@@ -26,9 +26,6 @@ class Weapon(ABC):
     rate_of_fire = None
     critical_hit_chance = None
 
-    @abstractmethod
-    def fire(self):
-        pass
 
 
 class Coordinates():
@@ -124,6 +121,9 @@ class Lincore(Warship):
         if chanse_counter < self.missile_defense_points:
             status_missile_defence = True
         return status_missile_defence
+
+    def take_damage(self, final_damage_dealt):
+        if random.randrange(0, 100)
 
 
 class MissileCrusier(Warship):
@@ -277,7 +277,7 @@ class HeavyShipGan(Weapon):
 
     def __init__(self, init_damage, init_accuracy, init_firing_range, init_rate_of_fire, init_critical_hit_chance):
         self.damage_point = init_damage
-        self.accuracy_point =init_accuracy
+        self.accuracy_point = init_accuracy
         self.firing_range_max = init_firing_range
         self.rate_of_fire_max = init_rate_of_fire
         self.critical_hit_point = init_critical_hit_chance
@@ -290,4 +290,57 @@ class HeavyShipGan(Weapon):
     def damage_point(self,init_damage):
         if not isinstance(init_damage, (int, float)):
             raise TypeError
-        e
+
+    @property
+    def accuracy_point(self):
+        return self.accuracy
+
+    @accuracy_point.setter
+    def accuracy_point(self, init_accuracy):
+        if not isinstance(init_accuracy, (int, float)):
+            raise TypeError
+
+    @property
+    def firing_range_max(self):
+        return self.firing_range
+
+    @firing_range_max.setter
+    def firing_range_max(self, init_firing_range):
+        if not isinstance(init_firing_range, (int, float)):
+            raise TypeError
+
+    @property
+    def rate_of_fire_max(self):
+        return self.rate_of_fire
+
+    @rate_of_fire_max.setter
+    def rate_of_fire_max(self, init_rate_of_fire):
+        if not isinstance(init_rate_of_fire, (int, float)):
+            raise TypeError
+
+    @property
+    def critical_hit_point(self):
+        return self.critical_hit_chance
+
+    @critical_hit_point.setter
+    def critical_hit_point(self, init_critical_hit_chance):
+        if not isinstance(init_critical_hit_chance, (int, float)):
+            raise TypeError
+
+    def fire(self, target):
+        final_damage_dealt = 0
+
+        if not isinstance(target, Warship):
+            raise TypeError
+
+        for shot in range(self.rate_of_fire):
+            if random.randrange(0, 100) <= self.accuracy:
+                if random.randrange(0, 100) <= target.
+                shot_damage = self.damage
+                if random.randrange(0, 100) <= self.critical_hit_chance:
+                    shot_damage = shot_damage * 2
+                final_damage_dealt = final_damage_dealt + shot_damage
+
+        return final_damage_dealt
+
+
